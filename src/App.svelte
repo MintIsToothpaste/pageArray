@@ -34,7 +34,7 @@
                     <h5 class="price">${pageArray_str}</h5>
                 </div>
                 </div>`;
-                $('.container').append(템플릿) 
+                
             })
         })
   	}
