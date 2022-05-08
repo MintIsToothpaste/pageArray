@@ -2,6 +2,7 @@ import App from './App.svelte';
 import firebase from "firebase/app";
 import "firebase/firestore";
 
+// 파이어베이스 sdk 설정들
 var app = new App({
 	target: document.body
 });

@@ -2,8 +2,11 @@
 	import {db} from './main.js'
 	import "firebase/firestore"; 
 
+    // 저장하기 누르면 실행
 	function save() {
-    	var pageArray = {
+
+        // example
+    	var pageArray1 = {
         ID : "Object0",
         X : 218,
         Y : 119,
@@ -13,28 +16,58 @@
         Strok : "FFFFFF"
         };
 
-        var pageArray_str = JSON.stringify(pageArray);
+        var pageArray2 = {
+        ID : "Object1",
+        X : 11,
+        Y : 22,
+        W : 33,
+        H : 44,
+        Color : "C1C1C1",
+        Strok : "FFFFFF"
+        };
 
-        db.collection('save').add(pageArray).then((result)=>{
+        var pageArray3 = {
+        ID : "Object2",
+        X : 22,
+        Y : 33,
+        W : 44,
+        H : 55,
+        Color : "C3C3C3",
+        Strok : "FFFFFF"
+        };
+
+        db.collection('save').add(pageArray1).then((result)=>{
             window.location.href = '/index.html'
         }).catch((error)=>{
             console.log(err)
         })
+
+        db.collection('save').add(pageArray2).then((result)=>{
+            window.location.href = '/index.html'
+        }).catch((error)=>{
+            console.log(err)
+        })
+
+        db.collection('save').add(pageArray3).then((result)=>{
+            window.location.href = '/index.html'
+        }).catch((error)=>{
+            console.log(err)
+        })
+
   	}
 
+    // 불러오기 누르면 pageArray에 저장
 	function recall() {
+
+        let pageArray = new Array(0);
+
     	db.collection('save').get().then((결과)=>{
             결과.forEach((doc)=>{
-                console.log(doc.data())
                 
-                var pageArray_str = JSON.stringify(doc.data());
+                // pageArray에 담기
+                pageArray = doc.data()
 
-                var 템플릿 = `<div class="design">
-                <div class="flex-grow-1 p-4">
-                    <h5 class="price">${pageArray_str}</h5>
-                </div>
-                </div>`;
-                
+                console.log(pageArray)
             })
         })
   	}
