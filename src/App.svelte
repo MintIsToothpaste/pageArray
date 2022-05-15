@@ -5,15 +5,21 @@
     // 저장하기 누르면 실행
 	function save() {
 
+
+        let pageArray_ex = new Array(0);
+
         // example
     	var pageArray1 = {
-        ID : "Object0",
-        X : 218,
-        Y : 119,
-        W : 198,
-        H : 270,
-        Color : "C4C4C4",
-        Strok : "FFFFFF"
+        canvas : klass {_objects: Array(2), lowerCanvasEl: canvas#canvas-page-0.s-lGOyMSU-CVDD.lower-canvas, _originalCanvasStyle: CSSStyleDeclaration},
+        canvasId : "canvas-page-0",
+        canvasMrapperId : "canvas-page-0-wrapper",
+        defaultObject : DefaultObjectClass {box: klass, title: klass},
+        index : 0,
+        object : [],
+        path : "/",
+        selectComponent: [],
+        zoom: 0.3,
+        [[Prototype]] : object
         };
 
         var pageArray2 = {
@@ -36,24 +42,18 @@
         Strok : "FFFFFF"
         };
 
-        db.collection('save').add(pageArray1).then((result)=>{
-            window.location.href = '/index.html'
-        }).catch((error)=>{
-            console.log(err)
-        })
+        pageArray_ex[0] = pageArray1
+        pageArray_ex[1] = pageArray2
+        pageArray_ex[2] = pageArray3
 
-        db.collection('save').add(pageArray2).then((result)=>{
-            window.location.href = '/index.html'
-        }).catch((error)=>{
-            console.log(err)
-        })
-
-        db.collection('save').add(pageArray3).then((result)=>{
-            window.location.href = '/index.html'
-        }).catch((error)=>{
-            console.log(err)
-        })
-
+        //pageArray_ex 대신 실제 pageArray 넣기
+        for (var i = 0; i < pageArray_ex.length; i++){
+            db.collection('save').add(pageArray_ex[i]).then((result)=>{
+                window.location.href = '/index.html'
+            }).catch((error)=>{
+                console.log(err)
+            })
+        }
   	}
 
     // 불러오기 누르면 pageArray에 저장
